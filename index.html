@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Accessible radio groups</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="./favicon.ico">
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <!-- Master CSS file -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Local CSS file if needed -->
+</head>
+<body>
+
+  <!-- skip to content link -->
+  <div class="skip-link">
+    <a href="#main">Skip to content (Press enter)</a>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1 class="header__logo"><a href="http://code.intopia.digital"><img src="assets/img/code-intopia.png" alt="Code Intopia"></a></h1>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <div class="banner">
+    <div class="container">
+      <h2>Accessible radio groups</h2>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Navigation -->
+    <nav class="aside">
+      <ul class="menu">
+        <li><a href="#problem">The problem</a></li>
+        <li><a href="#tests">Test criteria</a></li>
+        <li><a href="#solutions">Test cases</a></li>
+        <li><a href="#results">Test results</a></li>
+        <li><a href="#recommendations">Recommendations</a></li>
+        <li><a href="#wcag">WCAG references</a></li>
+        <li><a class="menu__external" href="http://code.intopia.digital">Home</a></li>
+      </ul>
+      <div>
+        <a class="link-primary" href="https://github.com/Intopia/radio-groups">Download Git repo</a>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main" id="main">
+      <h3 id="problem">The problem</h3>
+      <p>When presenting a set of radio button options (a radio group) to users, it is important that this group have some sort of overall label to provide context for the choices that the users are being asked to make. This is especially important for screen reader users who may arrive at a radio group with very little context.</p>
+      <p>These overall radio group labels should be programmatically associated with the radio buttons inside the radio group.</p>
+      <hr>
+
+      <h3 id="tests">Test criteria</h3>
+      <ol>
+        <li>Is the overall radio group label announced when the first radio button recieves focus?</li>
+      </ol>
+      <hr>
+
+      <h3 id="examples">Test cases</h3>
+      <h4 id="example1">Example 1: No radio group label</h4>
+      <div class="example">
+        <div>
+          <p>Radio group 1</p>
+          <ul class="radiogroup__list">
+            <li>
+              <div class="radiogroup_item">
+                <input class="radiogroup__control" id="example01-01" type="radio" name="radiogroup1">
+                <label class="radiogroup__label" for="example01-01">Item 1</label>
+              </div>
+            </li>
+            <li>
+              <div class="radiogroup_item">
+                <input class="radiogroup__control" id="example01-02" type="radio" name="radiogroup1">
+                <label class="radiogroup__label" for="example01-02">Item 2</label>
+              </div>
+            </li>
+            <li>
+              <div class="radiogroup_item">
+                <input class="radiogroup__control" id="example01-03" type="radio" name="radiogroup1">
+                <label class="radiogroup__label" for="example01-03">Item 3</label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+<pre><code class="language-markup">&lt;div&gt;
+  &lt;p&gt;Radio group 1&lt;/p&gt;
+  &lt;ul class="radiogroup__list"&gt;
+    &lt;li&gt;
+      &lt;div class="radiogroup_item"&gt;
+        &lt;input class="radiogroup__control" id="example01-01" type="radio" name="radiogroup1"&gt;
+        &lt;label class="radiogroup__label" for="example01-01"&gt;Item 1&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;div class="radiogroup_item"&gt;
+        &lt;input class="radiogroup__control" id="example01-02" type="radio" name="radiogroup1"&gt;
+        &lt;label class="radiogroup__label" for="example01-02"&gt;Item 2&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;div class="radiogroup_item"&gt;
+        &lt;input class="radiogroup__control" id="example01-03" type="radio" name="radiogroup1"&gt;
+        &lt;label class="radiogroup__label" for="example01-03"&gt;Item 3&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+
+      <h4 id="example2">Example 2: Fieldset and legend</h4>
+      <div class="example">
+        <fieldset class="radiogroup">
+          <legend class="radiogroup__legend">Radio group 2</legend>
+          <ul class="radiogroup__list">
+            <li>
+              <div class="radiogroup_item">
+                <input class="radiogroup__control" id="example02-01" type="radio" name="radiogroup2">
+                <label class="radiogroup__label" for="example02-01">Item 1</label>
+              </div>
+            </li>
+            <li>
+              <div class="radiogroup_item">
+                <input class="radiogroup__control" id="example02-02" type="radio" name="radiogroup2">
+                <label class="radiogroup__label" for="example02-02">Item 2</label>
+              </div>
+            </li>
+            <li>
+              <div class="radiogroup_item">
+                <input class="radiogroup__control" id="example02-03" type="radio" name="radiogroup2">
+                <label class="radiogroup__label" for="example02-03">Item 3</label>
+              </div>
+            </li>
+          </ul>
+        </fieldset>
+      </div>
+<pre><code class="language-markup">&lt;fieldset class="radiogroup"&gt;
+  &lt;legend class="radiogroup__legend"&gt;Radio group 2&lt;/legend&gt;
+  &lt;ul class="radiogroup__list"&gt;
+    &lt;li&gt;
+      &lt;div class="radiogroup_item"&gt;
+        &lt;input class="radiogroup__control" id="example02-01" type="radio" name="radiogroup2"&gt;
+        &lt;label class="radiogroup__label" for="example02-01"&gt;Item 1&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;div class="radiogroup_item"&gt;
+        &lt;input class="radiogroup__control" id="example02-02" type="radio" name="radiogroup2"&gt;
+        &lt;label class="radiogroup__label" for="example02-02"&gt;Item 2&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;div class="radiogroup_item"&gt;
+        &lt;input class="radiogroup__control" id="example02-03" type="radio" name="radiogroup2"&gt;
+        &lt;label class="radiogroup__label" for="example02-03"&gt;Item 3&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/fieldset&gt;
+</code></pre>
+
+      <h4 id="example3">Example 3: Using the <code>aria-describedby</code> attribute</h4>
+      <div class="example">
+        <div>
+          <p id="example03">Radio group 3</p>
+          <ul class="radiogroup__list">
+            <li>
+              <div class="radiogroup_item">
+                <input aria-describedby="example03" class="radiogroup__control" id="example03-01" type="radio" name="radiogroup1">
+                <label class="radiogroup__label" for="example03-01">Item 1</label>
+              </div>
+            </li>
+            <li>
+              <div class="radiogroup_item">
+                <input aria-describedby="example03" class="radiogroup__control" id="example03-02" type="radio" name="radiogroup1">
+                <label class="radiogroup__label" for="example03-02">Item 2</label>
+              </div>
+            </li>
+            <li>
+              <div class="radiogroup_item">
+                <input aria-describedby="example03" class="radiogroup__control" id="example03-03" type="radio" name="radiogroup1">
+                <label class="radiogroup__label" for="example03-03">Item 3</label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+<pre><code class="language-markup">&lt;div&gt;
+  &lt;p id="example03"&gt;Radio group 3&lt;/p&gt;
+  &lt;ul class="radiogroup__list"&gt;
+    &lt;li&gt;
+      &lt;div class="radiogroup_item"&gt;
+        &lt;input aria-describedby="example03" class="radiogroup__control" id="example03-01" type="radio" name="radiogroup1"&gt;
+        &lt;label class="radiogroup__label" for="example03-01"&gt;Item 1&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;div class="radiogroup_item"&gt;
+        &lt;input aria-describedby="example03" class="radiogroup__control" id="example03-02" type="radio" name="radiogroup1"&gt;
+        &lt;label class="radiogroup__label" for="example03-02"&gt;Item 2&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;div class="radiogroup_item"&gt;
+        &lt;input aria-describedby="example03" class="radiogroup__control" id="example01-03" type="radio" name="radiogroup1"&gt;
+        &lt;label class="radiogroup__label" for="example01-03"&gt;Item 3&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+
+      <h4 id="example4">Example 4: Using the <code>role</code> of <code>radiogroup</code> and <code>aria-labelledby</code></h4>
+      <div class="example">
+        <div class="radiogroup" role="radiogroup" aria-labelledby="example04">
+          <p id="example04">Radio group 4</p>
+          <ul class="radiogroup__list">
+            <li>
+              <div class="radiogroup_item">
+                <input class="radiogroup__control" id="example04-01" type="radio" name="radiogroup4">
+                <label class="radiogroup__label" for="example04-01">Item 1</label>
+              </div>
+            </li>
+            <li>
+              <div class="radiogroup_item">
+                <input class="radiogroup__control" id="example04-02" type="radio" name="radiogroup4">
+                <label class="radiogroup__label" for="example04-02">Item 2</label>
+              </div>
+            </li>
+            <li>
+              <div class="radiogroup_item">
+                <input class="radiogroup__control" id="example04-03" type="radio" name="radiogroup4">
+                <label class="radiogroup__label" for="example04-03">Item 3</label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+<pre><code class="language-markup">&lt;div class="radiogroup" role="radiogroup" aria-labelledby="example04"&gt;
+  &lt;p id="example04"&gt;Radio group 4&lt;/p&gt;
+  &lt;ul class="radiogroup__list"&gt;
+    &lt;li&gt;
+      &lt;div class="radiogroup_item"&gt;
+        &lt;input class="radiogroup__control" id="example04-01" type="radio" name="radiogroup4"&gt;
+        &lt;label class="radiogroup__label" for="example04-01"&gt;Item 1&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;div class="radiogroup_item"&gt;
+        &lt;input class="radiogroup__control" id="example04-02" type="radio" name="radiogroup4"&gt;
+        &lt;label class="radiogroup__label" for="example04-02"&gt;Item 2&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;div class="radiogroup_item"&gt;
+        &lt;input class="radiogroup__control" id="example04-03" type="radio" name="radiogroup4"&gt;
+        &lt;label class="radiogroup__label" for="example04-03"&gt;Item 3&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+      <hr>
+
+      <h3 id="results">Test results</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Environment</th>
+              <th>Example1</th>
+              <th>Example2</th>
+              <th>Example3</th>
+              <th>Example4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Win/Edge/NVDA</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+            </tr>
+            <tr>
+              <td>Win/Chrome/NVDA</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+            </tr>
+            <tr>
+              <td>Win/Firefox/NVDA</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+            </tr>
+            <tr>
+              <td>Win/Edge/JAWS</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+            </tr>
+            <tr>
+              <td>Win/Chrome/JAWS</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+            </tr>
+            <tr>
+              <td>Win/Firefox/JAWS</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+            </tr>
+            <tr>
+              <td>OSX/Chrome/Voiceover</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+            </tr>
+            <tr>
+              <td>OSX/Firefox/Voiceover</td>
+              <td>N/A</td>
+              <td>N/A</td>
+              <td>N/A</td>
+              <td>N/A</td>
+            </tr>
+            <tr>
+              <td>OSX/Safari/Voiceover</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>TBD</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+
+      <h3 id="recommendations">Recommendations</h3>
+      <p>Overall radio group labels should always be programmatically associated with their relevant form controls.</p>
+      <p><a href="#example2">Example 2: Fieldset and legend</a> is the <b>recommended solution</b> as it is the most rebust of all options.</p>
+      <hr>
+
+      <h3 id="wcag">Related WCAG references</h3>
+      <ul>
+        <li>[Reference]</li>
+      </ul>
+      <hr>
+
+    </main>
+  </div>
+
+<script src="assets/js/prism.js"></script>
+</body>
+</html>
